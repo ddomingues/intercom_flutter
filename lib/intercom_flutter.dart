@@ -62,6 +62,7 @@ class Intercom {
     String company,
     String companyId,
     String userId,
+    String languageOverride,
     Map<String, dynamic> customAttributes,
   }) {
     return _channel.invokeMethod('updateUser', <String, dynamic>{
@@ -71,6 +72,7 @@ class Intercom {
       'company': company,
       'companyId': companyId,
       'userId': userId,
+      'languageOverride': languageOverride,
       'customAttributes': customAttributes,
     });
   }

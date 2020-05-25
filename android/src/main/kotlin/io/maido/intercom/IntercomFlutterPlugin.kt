@@ -109,6 +109,7 @@ class IntercomFlutterPlugin(private val application: Application) : MethodCallHa
         val userId = call.argument<String>("userId")
         val company = call.argument<String>("company")
         val companyId = call.argument<String>("companyId")
+        val languageOverride = call.argument<String>("languageOverride")
         val customAttributes = call.argument<Map<String, Any?>>("customAttributes")
         val userAttributes = UserAttributes.Builder()
         if (email != null) {
@@ -128,6 +129,9 @@ class IntercomFlutterPlugin(private val application: Application) : MethodCallHa
           icmCompany.withName(company)
           icmCompany.withCompanyId(companyId)
           userAttributes.withCompany(icmCompany.build())
+        }
+        if (languageOverride != null) {
+          userAttributes.withLanguageOverride(languageOverride)
         }
         if (customAttributes != null) {
           for((key, value) in customAttributes){

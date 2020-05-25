@@ -111,6 +111,10 @@ id unread;
             company.companyId = companyId;
             attributes.companies = @[company];
         }
+        NSString *languageOverride = call.arguments[@"languageOverride"];
+        if(languageOverride != (id)[NSNull null]) {
+            attributes.languageOverride = languageOverride;
+        }
         NSDictionary *customAttributes = call.arguments[@"customAttributes"];
         if(customAttributes != (id)[NSNull null]) {
             attributes.customAttributes = customAttributes;
